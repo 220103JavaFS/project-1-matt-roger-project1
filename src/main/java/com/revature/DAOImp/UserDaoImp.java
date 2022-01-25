@@ -6,19 +6,20 @@ import com.revature.Models.UserDTO;
 import com.revature.utils.ConnectionUtil;
 
 import java.sql.*;
-import java.util.ConcurrentModificationException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDaoImp implements UserDAO {
     @Override
     public User findByUsername(String userName) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM users WHERE username = "+ userName +";";
+            String sql = "SELECT * FROM ers_users WHERE ers_username = "+ userName +";";
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             User user = new User();
 
             while (result.next()){
-                user.setUserID(result.getInt("user_id"));
+                user.setUserID(result.getInt("ers_user_id"));
                 user.setFirstName(result.getString("user_first_name"));
                 user.setLastName(result.getString("user_last_name"));
                 user.setEmail(result.getString("user_email"));
@@ -35,28 +36,46 @@ public class UserDaoImp implements UserDAO {
     }
 
     @Override
-    public User[] getUsers() {
-        return new User[0];
+    public List<User> getUsers() {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "SELECT * FROM ers_users;";
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            List<User> list = new ArrayList<User>();
+
+            while (result.next()){
+                User user = new User();
+                user.setUserID(result.getInt("ers_user_id"));
+                user.setFirstName(result.getString("user_first_name"));
+                user.setLastName(result.getString("user_last_name"));
+                user.setEmail(result.getString("user_email"));
+                user.setUserRoleId(result.getInt("user_role_id"));
+                list.add(user);
+            }
+            return list;
 
 
-
-
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return new ArrayList<User>();
 
     }
 
     @Override
-    public boolean addUser(User newUser) {
+    public boolean addUser(User user) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "INSERT INTO user ( ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) VALUES(?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO ers_users(ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) VALUES(?, ?, ?, ?, ?, ?);";
             PreparedStatement statement = conn.prepareStatement(sql);
 
             int count = 0;
-            statement.setString(count++, newUser.getUsername());
-            statement.setString(count++, newUser.getPassword());
-            statement.setString(count++, newUser.getFirstName());
-            statement.setString(count++, newUser.getLastName());
-            statement.setString(count++, newUser.getEmail());
-            statement.setInt(count++, newUser.getUserRoleId());
+            statement.setString(count++, user.getUsername());
+            statement.setString(count++, user.getPassword());
+            statement.setString(count++, user.getFirstName());
+            statement.setString(count++, user.getLastName());
+            statement.setString(count++, user.getEmail());
+            statement.setInt(count++, user.getUserRoleId());
 
             statement.execute();
             return true;
@@ -81,7 +100,7 @@ public class UserDaoImp implements UserDAO {
     @Override
     public boolean deleteUser(String username){
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "DELETE * FROM users WHERE ers_username = ?;";
+            String sql = "DELETE * FROM ers_users WHERE ers_username = ?;";
             PreparedStatement statement = conn.prepareStatement(sql);
 
             statement.setString(1, username);
@@ -100,6 +119,26 @@ public class UserDaoImp implements UserDAO {
 
     @Override
     public boolean updateUser(User user) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "UPDATE ers_users SET(ers_username = ?, ers_password = ?, user_first_name = ?, user_last_name = ?, user_email = ?, user_role_id = ?)" +
+                    "WHERE ers_username = ?;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            int count = 0;
+            statement.setString(count++, user.getUsername());
+            statement.setString(count++, user.getPassword());
+            statement.setString(count++, user.getFirstName());
+            statement.setString(count++, user.getLastName());
+            statement.setString(count++, user.getEmail());
+            statement.setInt(count++, user.getUserRoleId());
+            statement.setString(count++, user.getUsername());
+
+            statement.execute();
+            return true;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
 }

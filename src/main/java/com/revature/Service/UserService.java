@@ -1,26 +1,32 @@
 package com.revature.Service;
 
 import com.revature.DAO.UserDAO;
+import com.revature.DAOImp.UserDaoImp;
 import com.revature.Models.User;
 import com.revature.Models.UserDTO;
 
+import java.util.List;
+
 public class UserService implements UserDAO {
 
+    private UserDAO userDAO = new UserDaoImp();
 
 
     @Override
     public User findByUsername(String userName) {
-        return null;
+
+        return userDAO.findByUsername(userName);
     }
 
     @Override
-    public User[] getUsers() {
-        return new User[0];
+    public List<User> getUsers() {
+        return userDAO.getUsers();
     }
 
     @Override
-    public boolean addUser(User newUser) {
-        return false;
+    public boolean addUser(User user) {
+
+        return userDAO.addUser(user);
     }
 
 
@@ -32,11 +38,11 @@ public class UserService implements UserDAO {
 
     @Override
     public boolean deleteUser(String username) {
-        return false;
+        return userDAO.deleteUser(username);
     }
 
     @Override
     public boolean updateUser(User user) {
-        return false;
+        return userDAO.updateUser(user);
     }
 }
