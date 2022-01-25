@@ -13,21 +13,25 @@ public class UserDaoImp implements UserDAO {
     @Override
     public User findByUsername(String userName) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM ers_users WHERE ers_username = "+ userName +";";
-            Statement statement = conn.createStatement();
-            ResultSet result = statement.executeQuery(sql);
+            String sql = "SELECT * FROM ers_users WHERE ers_username = ?;";
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, userName);
+
+            ResultSet result = statement.executeQuery();
+
             User user = new User();
 
-            while (result.next()){
+            if(result.next()){
                 user.setUserID(result.getInt("ers_user_id"));
+                user.setPassword(result.getString("ers_password"));
+                user.setUsername(result.getString("ers_username"));
                 user.setFirstName(result.getString("user_first_name"));
                 user.setLastName(result.getString("user_last_name"));
                 user.setEmail(result.getString("user_email"));
                 user.setUserRoleId(result.getInt("user_role_id"));
             }
             return user;
-
-
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -43,10 +47,13 @@ public class UserDaoImp implements UserDAO {
             ResultSet result = statement.executeQuery(sql);
 
             List<User> list = new ArrayList<User>();
+            User user = new User();
 
             while (result.next()){
-                User user = new User();
+
                 user.setUserID(result.getInt("ers_user_id"));
+                user.setPassword(result.getString("ers_password"));
+                user.setUsername(result.getString("ers_username"));
                 user.setFirstName(result.getString("user_first_name"));
                 user.setLastName(result.getString("user_last_name"));
                 user.setEmail(result.getString("user_email"));
@@ -120,11 +127,10 @@ public class UserDaoImp implements UserDAO {
     @Override
     public boolean updateUser(User user) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "UPDATE ers_users SET(ers_username = ?, ers_password = ?, user_first_name = ?, user_last_name = ?, user_email = ?, user_role_id = ?)" +
-                    "WHERE ers_username = ?;";
+            String sql = "UPDATE ers_users SET ers_username = ?, ers_password = ?, user_first_name = ?, user_last_name = ?, user_email = ?, user_role_id = ? WHERE ers_username = ?;";
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            int count = 0;
+            int count = 1;
             statement.setString(count++, user.getUsername());
             statement.setString(count++, user.getPassword());
             statement.setString(count++, user.getFirstName());

@@ -11,6 +11,10 @@ public class UserService implements UserDAO {
 
     private UserDAO userDAO = new UserDaoImp();
 
+    public UserService(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
 
     @Override
     public User findByUsername(String userName) {

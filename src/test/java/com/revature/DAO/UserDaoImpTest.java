@@ -1,10 +1,13 @@
 package com.revature.DAO;
 import com.revature.DAOImp.UserDaoImp;
 import com.revature.Models.User;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import com.revature.Models.UserDTO;
+import com.revature.Service.LoginService;
+import com.revature.Service.UserService;
+import org.junit.jupiter.api.*;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +17,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserDaoImpTest {
+
+    private UserService testInstance;
+
+    private List<User> list = new ArrayList<User>();
+
+//    @Mock
+//    private UserDAO mockedDAO;
+
     private static UserDAO userDAO = new UserDaoImp();
+
+
     private static User testUser = new User(
-            0 ,
+            1 ,
             "MattRoger" ,
             "1933" ,
             "Roger" ,
@@ -24,6 +37,27 @@ public class UserDaoImpTest {
             "Roger@gmail.com" ,
             1
     );
+
+//    @BeforeEach
+//    public void setUp(){
+//
+//        List<User> newList = new ArrayList<User>();
+//        newList.add(testUser);
+//        list = newList;
+//
+//        testUser.setUserID(1);
+//        testUser.setUsername("MattRoger");
+//        testUser.setPassword("1933");
+//        MockitoAnnotations.openMocks(this);
+//        testInstance = new UserService(mockedDAO);
+//        Mockito.when(mockedDAO.getUsers()).thenReturn(list);
+//    }
+
+
+
+
+
+
     @Test
     @Order(1)
     void testCreateUser(){
@@ -52,8 +86,6 @@ public class UserDaoImpTest {
     @Test
     @Order(9)
     void testGetUsers(){
-        List list = new ArrayList<User>() ;
-        list.add(testUser);
         assertEquals(list, userDAO.getUsers());
     }
 }
