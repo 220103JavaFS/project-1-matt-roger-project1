@@ -29,7 +29,6 @@ public class UserDaoImpTest {
 
 
     private static User testUser = new User(
-            1 ,
             "MattRoger" ,
             "1933" ,
             "Roger" ,

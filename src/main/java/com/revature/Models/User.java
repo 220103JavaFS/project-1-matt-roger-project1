@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class User {
 
-    private Integer userID;
+    //private Integer userID;
     private String username;
     private String password;
     private String firstName;
@@ -15,8 +15,8 @@ public class User {
     public User() {
     }
 
-    public User(Integer userID, String username, String password, String firstName, String lastName, String email, Integer userRoleId) {
-        this.userID = userID;
+    public User(String username, String password, String firstName, String lastName, String email, Integer userRoleId) {
+        //this.userID = -1;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -25,13 +25,13 @@ public class User {
         this.userRoleId = userRoleId;
     }
 
-    public Integer getUserID() {
-        return userID;
-    }
+//    public Integer getUserID() {
+//        return userID;
+//    }
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
-    }
+//    public void setUserID(Integer userID) {
+//        this.userID = userID;
+//    }
 
     public String getUsername() {
         return username;
@@ -81,25 +81,23 @@ public class User {
         this.userRoleId = userRoleId;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(getUserID(), user.getUserID()) && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getUserRoleId(), user.getUserRoleId());
+        return Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(userRoleId, user.userRoleId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUserID(), getUsername(), getPassword(), getFirstName(), getLastName(), getEmail(), getUserRoleId());
+        return Objects.hash(username, password, firstName, lastName, email, userRoleId);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "userID=" + userID +
-                ", username='" + username + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

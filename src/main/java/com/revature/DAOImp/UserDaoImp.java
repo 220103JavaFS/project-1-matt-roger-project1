@@ -23,7 +23,7 @@ public class UserDaoImp implements UserDAO {
             User user = new User();
 
             if(result.next()){
-                user.setUserID(result.getInt("ers_user_id"));
+                //user.setUserID(result.getInt("ers_user_id"));
                 user.setPassword(result.getString("ers_password"));
                 user.setUsername(result.getString("ers_username"));
                 user.setFirstName(result.getString("user_first_name"));
@@ -51,7 +51,7 @@ public class UserDaoImp implements UserDAO {
 
             while (result.next()){
 
-                user.setUserID(result.getInt("ers_user_id"));
+                //user.setUserID(result.getInt("ers_user_id"));
                 user.setPassword(result.getString("ers_password"));
                 user.setUsername(result.getString("ers_username"));
                 user.setFirstName(result.getString("user_first_name"));
