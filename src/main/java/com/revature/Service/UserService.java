@@ -24,14 +24,19 @@ public class UserService implements UserDAO {
     }
 
 
-
-    @Override
-    public UserDTO login(String username) {
-        return null;
-    }
+//
+//    @Override
+//    public UserDTO login(String username) {
+//        return null;
+//    }
 
     @Override
     public boolean deleteUser(String username) {
+        return false;
+    }
+
+    @Override
+    public boolean updateUser(User user) {
         return false;
     }
 }

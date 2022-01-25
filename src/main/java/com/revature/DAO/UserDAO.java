@@ -8,7 +8,8 @@ public interface UserDAO {
     public User findByUsername(String userName);
     public User[] getUsers();
     public boolean addUser(User newUser);
-    UserDTO login(String username);
+    //UserDTO login(String username);
 
     boolean deleteUser(String username);
+    public boolean updateUser(User user);
 }
