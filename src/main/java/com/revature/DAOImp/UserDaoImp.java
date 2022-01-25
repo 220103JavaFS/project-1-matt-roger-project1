@@ -69,13 +69,13 @@ public class UserDaoImp implements UserDAO {
             String sql = "INSERT INTO ers_users(ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) VALUES(?, ?, ?, ?, ?, ?);";
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            int count = 0;
-            statement.setString(count++, user.getUsername());
-            statement.setString(count++, user.getPassword());
-            statement.setString(count++, user.getFirstName());
-            statement.setString(count++, user.getLastName());
-            statement.setString(count++, user.getEmail());
-            statement.setInt(count++, user.getUserRoleId());
+//            int count = 0;
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getFirstName());
+            statement.setString(4, user.getLastName());
+            statement.setString(5, user.getEmail());
+            statement.setInt(6, user.getUserRoleId());
 
             statement.execute();
             return true;
@@ -100,7 +100,7 @@ public class UserDaoImp implements UserDAO {
     @Override
     public boolean deleteUser(String username){
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "DELETE * FROM ers_users WHERE ers_username = ?;";
+            String sql = "DELETE FROM ers_users WHERE ers_username = ?;";
             PreparedStatement statement = conn.prepareStatement(sql);
 
             statement.setString(1, username);

@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -13,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserDaoImpTest {
     private static UserDAO userDAO = new UserDaoImp();
     private static User testUser = new User(
-            1 ,
+            0 ,
             "MattRoger" ,
             "1933" ,
             "Roger" ,
@@ -38,5 +41,19 @@ public class UserDaoImpTest {
     void testDelete(){
         assertTrue(userDAO.deleteUser(testUser.getUsername()));
         assertNull(userDAO.findByUsername(testUser.getUsername()).getUsername());
+    }
+
+    @Test
+    @Order(8)
+    void testUpdate(){
+        assertTrue((userDAO.updateUser(testUser)));
+    }
+
+    @Test
+    @Order(9)
+    void testGetUsers(){
+        List list = new ArrayList<User>() ;
+        list.add(testUser);
+        assertEquals(list, userDAO.getUsers());
     }
 }
