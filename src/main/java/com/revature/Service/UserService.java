@@ -6,6 +6,7 @@ import com.revature.Models.User;
 public class UserService implements UserDAO {
 
 
+    
     @Override
     public User getUserByUsername(String userName) {
         return null;
