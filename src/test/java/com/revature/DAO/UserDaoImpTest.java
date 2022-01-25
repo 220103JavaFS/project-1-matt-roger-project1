@@ -20,7 +20,6 @@ public class UserDaoImpTest {
             "Gaulke" ,
             "Roger@gmail.com" ,
             1
-
     );
     @Test
     @Order(1)
@@ -31,15 +30,13 @@ public class UserDaoImpTest {
     @Test
     @Order(3)
     void testGetUser(){
-        assertEquals(testUser , userDAO.findByUsername(testUser.getUserName()));
+        assertEquals(testUser , userDAO.findByUsername(testUser.getUsername()));
     }
 
     @Test
     @Order(7)
     void testDelete(){
-        assertTrue(testUser.deleteUser(userDAO.getUserName()));
-        assertNull(userDAO.findByUsername(userDAO.getUserName()).getUserName());
+        assertTrue(userDAO.deleteUser(testUser.getUsername()));
+        assertNull(userDAO.findByUsername(testUser.getUsername()).getUsername());
     }
-
-
 }

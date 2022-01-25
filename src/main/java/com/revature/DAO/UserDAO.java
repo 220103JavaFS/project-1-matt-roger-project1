@@ -9,4 +9,6 @@ public interface UserDAO {
     public User[] getUsers();
     public boolean addUser(User newUser);
     UserDTO login(String username);
+
+    boolean deleteUser(String username);
 }

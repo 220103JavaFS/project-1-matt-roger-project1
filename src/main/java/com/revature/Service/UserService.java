@@ -2,6 +2,7 @@ package com.revature.Service;
 
 import com.revature.DAO.UserDAO;
 import com.revature.Models.User;
+import com.revature.Models.UserDTO;
 
 public class UserService implements UserDAO {
 
@@ -19,6 +20,18 @@ public class UserService implements UserDAO {
 
     @Override
     public boolean addUser(User newUser) {
+        return false;
+    }
+
+
+
+    @Override
+    public UserDTO login(String username) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteUser(String username) {
         return false;
     }
 }
