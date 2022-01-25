@@ -20,13 +20,13 @@ public class ConnectionUtil {
     }
 
 
-//    public static void main(String[] args){
-//        try{
-//            getConnection();
-//            System.out.println("Connection successful");
-//        }catch (SQLException e){
-//            System.out.println("Connection failed");
-//            e.printStackTrace();
-//        }
-//    }
+    public static void main(String[] args){
+        try{
+            getConnection();
+            System.out.println("Connection successful");
+        }catch (SQLException e){
+            System.out.println("Connection failed");
+            e.printStackTrace();
+        }
+    }
 }
