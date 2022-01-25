@@ -8,7 +8,7 @@ public class UserService implements UserDAO {
 
     
     @Override
-    public User getUserByUsername(String userName) {
+    public User findByUsername(String userName) {
         return null;
     }
 
