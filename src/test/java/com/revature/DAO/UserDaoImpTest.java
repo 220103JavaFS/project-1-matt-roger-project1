@@ -61,6 +61,7 @@ public class UserDaoImpTest {
     @Order(1)
     void testCreateUser(){
         assertTrue(userDAO.addUser(testUser));
+        assertNotNull(userDAO.findByUsername(testUser.getUsername()).getUsername());
     }
 
     @Test

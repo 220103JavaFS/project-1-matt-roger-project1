@@ -4,17 +4,18 @@ import com.revature.Models.Reimbursement;
 import com.revature.Models.Status;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface ReimbursementDAO {
-    ArrayList<Reimbursement> getAllReimbursements();
+    List<Reimbursement> getAllReimbursements();
 
-    ArrayList<Reimbursement> getReimbursementsByAuthor(int authorUserId);
+    List<Reimbursement> getReimbursementsByAuthor(int authorUserId);
 
-    ArrayList<Reimbursement> getAllReimbursementsByStatus(Status status);
+    List<Reimbursement> getAllReimbursementsByStatus(int status);
 
     Reimbursement getReimbursementById(int reimbId);
 
-    boolean updateReimbursement(Reimbursement reimbursement, int reimbId);
+    boolean updateReimbursement(Reimbursement reimbursement);
 
     boolean addReimbursement(Reimbursement reimbursement);
 
