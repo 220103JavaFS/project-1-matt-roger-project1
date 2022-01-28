@@ -16,15 +16,15 @@ public class ReimbursementService{
     }
 
     public List<Reimbursement> getAllReimbursements() {
-        return null;
+        return reimbursementDAO.getAllReimbursements();
     }
 
     public List<Reimbursement> getReimbursementsByAuthor(int authorUserId) {
-        return null;
+        return reimbursementDAO.getReimbursementsByAuthor(authorUserId);
     }
 
     public List<Reimbursement> getAllReimbursementsByStatus(int status) {
-        return null;
+        return reimbursementDAO.getAllReimbursementsByStatus(status);
     }
 
     public Reimbursement getReimbursementById(int reimbId) {
