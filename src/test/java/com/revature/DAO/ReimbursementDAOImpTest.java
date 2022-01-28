@@ -52,11 +52,12 @@ public class ReimbursementDAOImpTest {
         list = newList;
 
        // testReimbursement.setUserID(1);
-        testReimbursement.setUsername("MattRoger");
-        testReimbursement.setPassword("1933");
+        testReimbursement.setAmount(100.00);
+        testReimbursement.setDescription("Test reimbursement");
+        testReimbursement.setReceipt(hexStringToByteArray("e04fd020ea3a6910a2d808002b30309d"));
         MockitoAnnotations.openMocks(this);
-        testReimbursement = new Reimbursement(mockedDAO);
-        Mockito.when(mockedDAO.getUsers()).thenReturn(list);
+        testInstance = new ReimbursementService(mockedDAO);
+        Mockito.when(mockedDAO.getAllReimbursements()).thenReturn(list);
     }
 
 
