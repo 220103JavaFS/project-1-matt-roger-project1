@@ -49,7 +49,7 @@ public class ReimbursementDAOImpTest {
     @Test
     @Order(3)
     void testGetReimbursementsByAuthor() {
-        assertEquals(testReimbursement,reimbursementDAO.getReimbursementsByAuthor(testReimbursement.getAuthorUserId()));
+        assertEquals(list,reimbursementDAO.getReimbursementsByAuthor(testReimbursement.getAuthorUserId()));
     }
 
     @Test
