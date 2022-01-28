@@ -74,14 +74,14 @@ public class ReimbursementDAOImpTest {
     @Order(11)
     void testAddReimbursement() {
         assertTrue(reimbursementDAO.addReimbursement(testReimbursement));
-        assertNotNull(reimbursementDAO.getReimbursementById(testReimbursement.getId()).getId());
+        assertNotNull(reimbursementDAO.getReimbursementById(testReimbursement.getId()));
     }
 
     @Test
     @Order(13)
     void testDeleteReimbursement() {
         assertTrue(reimbursementDAO.deleteReimbursement(testReimbursement.getId()));
-        assertNull(reimbursementDAO.getReimbursementById(testReimbursement.getId()).getId());
+        assertNull(reimbursementDAO.getReimbursementById(testReimbursement.getId()));
     }
 
 
