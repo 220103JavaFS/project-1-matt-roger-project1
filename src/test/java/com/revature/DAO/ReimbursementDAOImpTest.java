@@ -9,6 +9,7 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
 import com.revature.Service.UserService;
 import org.junit.jupiter.api.*;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
@@ -42,6 +43,7 @@ public class ReimbursementDAOImpTest {
             2
     );
 
+    @Mock
     private ReimbursementService mockedDAO;
 
     @BeforeEach
@@ -58,30 +60,34 @@ public class ReimbursementDAOImpTest {
         MockitoAnnotations.openMocks(this);
         testInstance = new ReimbursementService(mockedDAO);
         Mockito.when(mockedDAO.getAllReimbursements()).thenReturn(list);
+        Mockito.when(mockedDAO.getReimbursementsByAuthor(testReimbursement.getAuthorUserId())).thenReturn(list);
+        Mockito.when(mockedDAO.getAllReimbursementsByStatus(testReimbursement.getStatusId())).thenReturn(list);
+        Mockito.when(mockedDAO.getReimbursementById(testReimbursement.getId())).thenReturn(testReimbursement);
     }
 
 
     @Test
     @Order(1)
     void testGetAllReimbursements() {
-        assertEquals(list, reimbursementDAO.getAllReimbursements());
+        assertEquals(list, mockedDAO.getAllReimbursements());
     }
     @Test
     @Order(3)
     void testGetReimbursementsByAuthor() {
-        assertEquals(list,reimbursementDAO.getReimbursementsByAuthor(testReimbursement.getAuthorUserId()));
+        assertEquals(list,mockedDAO.getReimbursementsByAuthor(testReimbursement.getAuthorUserId()));
     }
 
     @Test
     @Order(5)
     void testGetAllReimbursementsByStatus() {
-        assertEquals(testReimbursement,reimbursementDAO.getAllReimbursementsByStatus(testReimbursement.getStatusId()));
+        assertEquals(list,mockedDAO.getAllReimbursementsByStatus(testReimbursement.getStatusId()));
     }
 
     @Test
     @Order(7)
     void testGetReimbursementById() {
-        assertEquals(testReimbursement,reimbursementDAO.getReimbursementById(testReimbursement.getId()));
+        System.out.println(testReimbursement.getId());
+        assertEquals(testReimbursement,mockedDAO.getReimbursementById(testReimbursement.getId()));
     }
 
     @Test
@@ -94,7 +100,6 @@ public class ReimbursementDAOImpTest {
     @Order(11)
     void testAddReimbursement() {
         assertTrue(reimbursementDAO.addReimbursement(testReimbursement));
-
     }
 
 
@@ -102,7 +107,7 @@ public class ReimbursementDAOImpTest {
     @Order(13)
     void testDeleteReimbursement() {
         assertTrue(reimbursementDAO.deleteReimbursement(testReimbursement.getId()));
-        assertNull(reimbursementDAO.getReimbursementById(testReimbursement.getId()));
+        assertNull(reimbursementDAO.getReimbursementById(testReimbursement.getId()).getReceipt());
     }
 
 

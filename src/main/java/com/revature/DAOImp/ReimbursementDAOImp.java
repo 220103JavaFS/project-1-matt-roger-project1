@@ -107,7 +107,33 @@ public class ReimbursementDAOImp implements ReimbursementDAO {
 
     @Override
     public Reimbursement getReimbursementById(int reimbId) {
-        return null;
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "SELECT * FROM ers_reimbursement WHERE reimb_id = " + reimbId + ";";
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            List<Reimbursement> list = new ArrayList<Reimbursement>();
+            System.out.println(reimbId);
+
+            while (result.next()){
+                Reimbursement reimbursement = new Reimbursement();
+                reimbursement.setId(result.getInt("reimb_id"));
+                reimbursement.setAmount(result.getDouble("reimb_amount"));
+                reimbursement.setTimeSubmitted(result.getTimestamp("reimb_submitted"));
+                reimbursement.setTimeResolved(result.getTimestamp("reimb_resolved"));
+                reimbursement.setDescription(result.getString("reimb_description"));
+                reimbursement.setReceipt(result.getBytes("reimb_receipt"));
+                reimbursement.setAuthorUserId(result.getInt("reimb_author"));
+                reimbursement.setResolverUserId(result.getInt("reimb_resolver"));
+                reimbursement.setStatusId(result.getInt("reimb_status_id"));
+                reimbursement.setTypeId(result.getInt("reimb_type_id"));
+                return reimbursement;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        System.out.println("return default");
+        return new Reimbursement();
     }
 
     @Override
