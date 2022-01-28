@@ -22,8 +22,8 @@ public class UserDaoImpTest {
 
     private List<User> list = new ArrayList<User>();
 
-//    @Mock
-//    private UserDAO mockedDAO;
+    @Mock
+    private UserDAO mockedDAO;
 
     private static UserDAO userDAO = new UserDaoImp();
 
@@ -37,20 +37,20 @@ public class UserDaoImpTest {
             1
     );
 
-//    @BeforeEach
-//    public void setUp(){
-//
-//        List<User> newList = new ArrayList<User>();
-//        newList.add(testUser);
-//        list = newList;
-//
-//        testUser.setUserID(1);
-//        testUser.setUsername("MattRoger");
-//        testUser.setPassword("1933");
-//        MockitoAnnotations.openMocks(this);
-//        testInstance = new UserService(mockedDAO);
-//        Mockito.when(mockedDAO.getUsers()).thenReturn(list);
-//    }
+    @BeforeEach
+    public void setUp(){
+
+        List<User> newList = new ArrayList<User>();
+        newList.add(testUser);
+        list = newList;
+
+        //testUser.setUserID(1);
+        testUser.setUsername("MattRoger");
+        testUser.setPassword("1933");
+        MockitoAnnotations.openMocks(this);
+        testInstance = new UserService(mockedDAO);
+        Mockito.when(mockedDAO.getUsers()).thenReturn(list);
+    }
 
 
 
@@ -86,6 +86,6 @@ public class UserDaoImpTest {
     @Test
     @Order(9)
     void testGetUsers(){
-        assertEquals(list, userDAO.getUsers());
+        assertEquals(list, mockedDAO.getUsers());
     }
 }

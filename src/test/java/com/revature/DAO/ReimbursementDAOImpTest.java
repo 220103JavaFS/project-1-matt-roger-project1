@@ -9,6 +9,8 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
 import com.revature.Service.UserService;
 import org.junit.jupiter.api.*;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -39,6 +41,23 @@ public class ReimbursementDAOImpTest {
             0,
             2
     );
+
+    private ReimbursementService mockedDAO;
+
+    @BeforeEach
+    public void setUp(){
+
+        List<Reimbursement> newList = new ArrayList<Reimbursement>();
+        newList.add(testReimbursement);
+        list = newList;
+
+       // testReimbursement.setUserID(1);
+        testReimbursement.setUsername("MattRoger");
+        testReimbursement.setPassword("1933");
+        MockitoAnnotations.openMocks(this);
+        testReimbursement = new Reimbursement(mockedDAO);
+        Mockito.when(mockedDAO.getUsers()).thenReturn(list);
+    }
 
 
     @Test
