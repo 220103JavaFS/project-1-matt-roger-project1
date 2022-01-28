@@ -85,16 +85,63 @@ public class ReimbursementDAOImp implements ReimbursementDAO {
 
     @Override
     public boolean updateReimbursement(Reimbursement reimbursement) {
-        return false;
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "UPDATE ers_reimbursement SET reimb_amount = ?, reimb_submitted = ?, " +
+                    "reimb_resolved = ?, reimb_description = ?, reimb_receipt = ?," +
+                    " reimb_author = ?, reimb_resolver = ?, reimb_status_id = ?, reimb_type_id = ?" +
+                    "WHERE reimb_id = ?;";
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setDouble(1, reimbursement.getAmount());
+            statement.setTimestamp(2, reimbursement.getTimeSubmitted());
+            statement.setTimestamp(3, reimbursement.getTimeResolved());
+            statement.setString(4, reimbursement.getDescription());
+            statement.setBytes(5, reimbursement.getReceipt());
+            statement.setInt(6, reimbursement.getAuthorUserId());
+            statement.setInt(7, reimbursement.getResolverUserId());
+            statement.setInt(8, reimbursement.getStatusId());
+            statement.setInt(9, reimbursement.getTypeId());
+            statement.setInt(10, reimbursement.getId());
+            statement .execute();
+            return true;
+
+
+
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean addReimbursement(Reimbursement reimbursement) {
-        return false;
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "INSERT INTO ers_reimbursement (reimb_amount, reimb_submitted," +
+                    "reimb_description, reimb_author, reimb_status_id, reimb_type_id) " +
+                    "VALUES (?, ?, ?, ?, ?, ?);";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setDouble(1, reimbursement.getAmount());
+            statement.setTimestamp(2, reimbursement.getTimeSubmitted());
+            statement.setString(3, reimbursement.getDescription());
+            statement.setInt(4, reimbursement.getAuthorUserId());
+            statement.setInt(5, reimbursement.getStatusId());
+            statement.setInt(6, reimbursement.getTypeId());
+
+            statement.execute();
+            return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        //return false;
     }
 
     @Override
     public boolean deleteReimbursement(int reimbId) {
+
+
         return false;
     }
 }

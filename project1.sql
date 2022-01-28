@@ -37,7 +37,7 @@ CREATE TABLE ers_reimbursement(
     reimb_submitted TIMESTAMP,
     reimb_resolved TIMESTAMP,
     reimb_description VARCHAR(250),
-    reimb_reciept BYTEA,
+    reimb_receipt BYTEA,
     reimb_author INTEGER REFERENCES ers_users(ers_users_id),
     reimb_resolver INTEGER REFERENCES ers_users(ers_users_id),
     reimb_status_id INTEGER,
