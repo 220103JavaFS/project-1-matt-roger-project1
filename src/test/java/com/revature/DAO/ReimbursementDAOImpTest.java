@@ -40,7 +40,7 @@ public class ReimbursementDAOImpTest {
     );
 
     @Mock
-    private ReimbursementService mockedDAO;
+    private ReimbursementDAO mockedDAO;
 
     @BeforeEach
     public void setUp(){
