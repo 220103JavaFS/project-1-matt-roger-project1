@@ -1,9 +1,7 @@
 package com.revature.DAO;
 
 import com.revature.Models.Reimbursement;
-import com.revature.Models.Status;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface ReimbursementDAO {

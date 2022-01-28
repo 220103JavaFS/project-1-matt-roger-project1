@@ -7,7 +7,7 @@ import com.revature.Models.UserDTO;
 
 import java.util.List;
 
-public class UserService implements UserDAO {
+public class UserService {
 
     private UserDAO userDAO = new UserDaoImp();
 
@@ -16,18 +16,15 @@ public class UserService implements UserDAO {
     }
 
 
-    @Override
     public User findByUsername(String userName) {
 
         return userDAO.findByUsername(userName);
     }
 
-    @Override
     public List<User> getUsers() {
         return userDAO.getUsers();
     }
 
-    @Override
     public boolean addUser(User user) {
 
         return userDAO.addUser(user);
@@ -40,12 +37,10 @@ public class UserService implements UserDAO {
 //        return null;
 //    }
 
-    @Override
     public boolean deleteUser(String username) {
         return userDAO.deleteUser(username);
     }
 
-    @Override
     public boolean updateUser(User user) {
         return userDAO.updateUser(user);
     }

@@ -1,6 +1,8 @@
 package com.revature.Models;
 
 
+import com.revature.utils.Status;
+
 import java.sql.Timestamp;
 
 public class ReimbursementDTO {

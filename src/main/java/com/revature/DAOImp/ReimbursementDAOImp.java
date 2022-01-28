@@ -2,11 +2,8 @@ package com.revature.DAOImp;
 
 import com.revature.DAO.ReimbursementDAO;
 import com.revature.Models.Reimbursement;
-import com.revature.Models.Status;
-import com.revature.Models.User;
 import com.revature.utils.ConnectionUtil;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -186,9 +183,8 @@ public class ReimbursementDAOImp implements ReimbursementDAO {
             return true;
         }catch(SQLException e){
             e.printStackTrace();
-            return false;
         }
-        //return false;
+        return false;
     }
 
     @Override
