@@ -13,13 +13,13 @@ public class LoginService {
         this.userDAO = userDAO;
     }
 
-    public boolean login(UserDTO userDTO){
+    public User login(UserDTO userDTO){
         User userFromDb = userDAO.findByUsername(userDTO.username);
 
         if(userFromDb !=null&&userDTO.password.equals(userFromDb.getPassword())){
-            return true;
+            return userFromDb;
         }else {
-            return false;
+            return null;
         }
     }
 }

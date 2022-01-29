@@ -82,11 +82,11 @@ public class UserController implements Controller{
 
     @Override
     public void addRoutes(Javalin app) {
-        app.get("/users/delete_user/{username}", deleteUser);
-        app.get("/user/add_user", addUser);
-        app.get("/user/update_user", updateUser);
+        app.post("/users/delete_user/{username}", deleteUser);
+        app.post("/user/add_user", addUser);
+        app.put("/user/update_user", updateUser);
         app.get("/user/get_all_users", getAllUsers);
-        app.get("/user/get_by_username/{username}", getByUsername);
+        app.post("/user/get_by_username/{username}", getByUsername);
     }
 }
 

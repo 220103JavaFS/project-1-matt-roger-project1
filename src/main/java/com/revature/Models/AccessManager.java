@@ -18,7 +18,7 @@ public class AccessManager implements io.javalin.core.security.AccessManager {
 
         //Whitelist paths here
         ArrayList<String> openList = new ArrayList<>();
-        //openList.add("/login");
+        openList.add("/login");
         //openList.add("/logout");
         //openList.add("/add_customer");
         //openList.add("/create_account");
