@@ -11,6 +11,9 @@ public class UserService {
 
     private UserDAO userDAO = new UserDaoImp();
 
+    public UserService() {
+    }
+
     public UserService(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
