@@ -141,10 +141,10 @@ public class ReimbursementController implements Controller{
     public void addRoutes(Javalin app) {
         app.get("/reimbursments", getAllReimbursements);
         app.get("/reimbursments/user/{userid}", getReimbursementById);
-        app.get("/reimbursment/user/update", updateReimbursement);
+        app.put("/reimbursments/user/update", updateReimbursement);
         app.get("/reimbursments/user/{author}", getReimbursementsByAuthor);
-        app.post("/add", addReimbursement);
-        app.delete("/reimbursement/delete/{id}", deleteReimbursement);
+        app.post("/reimbursments/add", addReimbursement);
+        app.delete("/reimbursements/delete/{id}", deleteReimbursement);
         app.get("/reimbursments/user/{status}", getAllReimbursementsByStatus);
 
 
