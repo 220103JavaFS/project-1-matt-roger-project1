@@ -1,0 +1,98 @@
+12:44:01.340 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+12:44:01.346 [] [main] DEBUG org.eclipse.jetty.util.log - Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog
+12:44:01.348 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @322ms to org.eclipse.jetty.util.log.Slf4jLog
+12:44:01.349 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+12:44:01.367 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.2.0 (released January 2, 2022).
+12:44:01.368 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+12:44:01.503 [] [main] ERROR io.javalin.Javalin - Failed to start Javalin
+12:44:01.503 [] [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+12:44:01.509 [] [main] INFO  io.javalin.Javalin - Javalin has stopped
+12:48:02.958 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+12:48:02.962 [] [main] DEBUG org.eclipse.jetty.util.log - Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog
+12:48:02.965 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @279ms to org.eclipse.jetty.util.log.Slf4jLog
+12:48:02.966 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+12:48:02.978 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.2.0 (released January 2, 2022).
+12:48:02.978 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+12:48:03.103 [] [main] ERROR io.javalin.Javalin - Failed to start Javalin
+12:48:03.103 [] [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+12:48:03.109 [] [main] INFO  io.javalin.Javalin - Javalin has stopped
+12:53:43.028 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+12:53:43.034 [] [main] DEBUG org.eclipse.jetty.util.log - Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog
+12:53:43.040 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @387ms to org.eclipse.jetty.util.log.Slf4jLog
+12:53:43.041 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+12:53:43.067 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.2.0 (released January 2, 2022).
+12:53:43.067 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+12:53:43.225 [] [main] ERROR io.javalin.Javalin - Failed to start Javalin
+12:53:43.225 [] [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+12:53:43.230 [] [main] INFO  io.javalin.Javalin - Javalin has stopped
+12:56:41.480 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+12:56:41.484 [] [main] DEBUG org.eclipse.jetty.util.log - Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog
+12:56:41.487 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @285ms to org.eclipse.jetty.util.log.Slf4jLog
+12:56:41.488 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+12:56:41.502 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.2.0 (released January 2, 2022).
+12:56:41.624 [] [main] ERROR io.javalin.Javalin - Failed to start Javalin
+12:56:41.624 [] [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+12:56:41.628 [] [main] INFO  io.javalin.Javalin - Javalin has stopped
+12:56:49.014 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+12:56:49.018 [] [main] DEBUG org.eclipse.jetty.util.log - Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog
+12:56:49.022 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @288ms to org.eclipse.jetty.util.log.Slf4jLog
+12:56:49.022 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+12:56:49.034 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.2.0 (released January 2, 2022).
+12:56:49.292 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:7001/
+12:56:49.292 [] [main] INFO  io.javalin.Javalin - Javalin started in 270ms \o/
+13:00:05.624 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+13:00:05.631 [] [main] DEBUG org.eclipse.jetty.util.log - Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog
+13:00:05.637 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @374ms to org.eclipse.jetty.util.log.Slf4jLog
+13:00:05.638 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+13:00:05.663 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.2.0 (released January 2, 2022).
+13:00:05.663 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+13:00:05.941 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+13:00:05.941 [] [main] INFO  io.javalin.Javalin - Javalin started in 303ms \o/
