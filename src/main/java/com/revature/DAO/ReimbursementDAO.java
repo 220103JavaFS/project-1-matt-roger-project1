@@ -13,7 +13,7 @@ public interface ReimbursementDAO {
 
     Reimbursement getReimbursementById(int reimbId);
 
-    boolean updateReimbursement(Reimbursement reimbursement);
+    public boolean updateReimbursement(Reimbursement reimbursement);
 
     boolean addReimbursement(Reimbursement reimbursement);
 

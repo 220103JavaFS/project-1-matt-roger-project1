@@ -15,6 +15,11 @@ public class ReimbursementService{
         this.reimbursementDAO = reimbursementDAO;
     }
 
+    public ReimbursementService() {
+
+    }
+
+
     public List<Reimbursement> getAllReimbursements() {
         return reimbursementDAO.getAllReimbursements();
     }
