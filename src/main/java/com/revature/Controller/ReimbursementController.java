@@ -85,10 +85,31 @@ public class ReimbursementController implements Controller{
     };
 
     Handler addReimbursement = (ctx) -> {
-        
+        if (ctx.req.getSession(false) != null) {
+            Reimbursement reimbursement = ctx.bodyAsClass(Reimbursement.class);
+            if(reimbursementService.addReimbursement(reimbursement)){
+                ctx.status(201);
+            }else {
+                ctx.status(400);
+            }
+        }else{
+            ctx.status(401);
+        }
 
 
     };
+
+    Handler deleteReimbursement = ctx -> {
+        int id = Integer.parseInt(ctx.pathParam("id"));
+        if(reimbursementService.deleteReimbursement(id)){
+            ctx.status(200);
+        }else{
+            ctx.status(400);
+        }
+
+    };
+
+    Handler getAllReimbursementsByStatus = ctx ->
 
 
 
@@ -102,6 +123,8 @@ public class ReimbursementController implements Controller{
         app.get("/reimbursments/user/{userid}", getReimbursementById);
         app.get("/reimbursment/user/update", updateReimbursement);
         app.get("/reimbursments/user/{author}", getReimbursementsByAuthor);
+        app.post("/add", addReimbursement);
+        app.delete("reimbursement/delete/{id}", deleteReimbursement);
 
 
     }
