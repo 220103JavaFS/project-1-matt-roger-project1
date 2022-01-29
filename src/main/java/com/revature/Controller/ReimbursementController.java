@@ -109,7 +109,27 @@ public class ReimbursementController implements Controller{
 
     };
 
-    Handler getAllReimbursementsByStatus = ctx ->
+    Handler getAllReimbursementsByStatus = ctx -> {
+        if(ctx.req.getSession(false)!=null) {
+            String idString = ctx.pathParam("status");
+            try {
+
+                int id = Integer.parseInt(idString);
+                List list = new ArrayList<Reimbursement>();
+                list = reimbursementService.getAllReimbursementsByStatus(id);
+                ctx.json(list);
+                ctx.status(200);
+            }catch(NumberFormatException e){
+                e.printStackTrace();
+                ctx.status(400);
+            }
+
+
+        }else{
+            ctx.status(401);
+        }
+
+    };
 
 
 
@@ -124,7 +144,8 @@ public class ReimbursementController implements Controller{
         app.get("/reimbursment/user/update", updateReimbursement);
         app.get("/reimbursments/user/{author}", getReimbursementsByAuthor);
         app.post("/add", addReimbursement);
-        app.delete("reimbursement/delete/{id}", deleteReimbursement);
+        app.delete("/reimbursement/delete/{id}", deleteReimbursement);
+        app.get("/reimbursments/user/{status}", getAllReimbursementsByStatus);
 
 
     }
