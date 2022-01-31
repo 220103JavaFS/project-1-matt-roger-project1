@@ -27,6 +27,7 @@ public class ReimbursementController implements Controller{
 
             ctx.status(200);
         }else {
+            log.warn("Error. Invalid session.");
             ctx.status(401);
         }
     };
@@ -46,6 +47,7 @@ public class ReimbursementController implements Controller{
 
 
         }else{
+            log.warn("Error. Invalid session.");
             ctx.status(401);
         }
     };
@@ -58,6 +60,7 @@ public class ReimbursementController implements Controller{
             ctx.json(reimbursementService.updateReimbursement(reimbursement));
             ctx.status(200);
         }else{
+            log.warn("Error. Invalid session.");
             ctx.status(401);
         }
     };
@@ -76,14 +79,14 @@ public class ReimbursementController implements Controller{
                 e.printStackTrace();
                 ctx.status(400);
             }
-
-
         }else{
+            log.warn("Error. Invalid session.");
             ctx.status(401);
         }
 
     };
 
+    //needs a session tracker
     Handler addReimbursement = (ctx) -> {
         if (ctx.req.getSession(false) != null) {
             Reimbursement reimbursement = ctx.bodyAsClass(Reimbursement.class);
@@ -99,6 +102,7 @@ public class ReimbursementController implements Controller{
 
     };
 
+    //needs as session tracker
     Handler deleteReimbursement = ctx -> {
         int id = Integer.parseInt(ctx.pathParam("id"));
         if(reimbursementService.deleteReimbursement(id)){
@@ -121,11 +125,13 @@ public class ReimbursementController implements Controller{
                 ctx.status(200);
             }catch(NumberFormatException e){
                 e.printStackTrace();
+                log.warn("Error. Invalid Entry.");
                 ctx.status(400);
             }
 
 
         }else{
+            log.warn("Error. Invalid session.");
             ctx.status(401);
         }
 

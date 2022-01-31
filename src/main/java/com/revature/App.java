@@ -11,6 +11,7 @@ import io.javalin.Javalin;
 public class App {
     private static Javalin app;
 
+
     public static void main(String[] args) {
 
         app = Javalin.create(config -> {

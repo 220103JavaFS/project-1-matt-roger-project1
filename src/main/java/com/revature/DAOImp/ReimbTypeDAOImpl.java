@@ -26,8 +26,6 @@ public class ReimbTypeDAOImpl implements ReimbTypeDAO {
             List<ReimbType> list = new ArrayList<ReimbType>();
             ReimbType type = new ReimbType();
 
-
-
             while (result.next()){
                 type.setId(result.getInt("reimb_type_id"));
                 type.setType(Type.values()[result.getInt("reimb_type")]);
@@ -49,8 +47,6 @@ public class ReimbTypeDAOImpl implements ReimbTypeDAO {
 
             List<ReimbType> list = new ArrayList<ReimbType>();
             ReimbType type = new ReimbType();
-
-
 
             while (result.next()){
                 type.setId(result.getInt("reimb_type_id"));

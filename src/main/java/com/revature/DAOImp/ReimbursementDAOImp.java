@@ -47,7 +47,6 @@ public class ReimbursementDAOImp implements ReimbursementDAO {
 
             List<Reimbursement> list = new ArrayList<Reimbursement>();
 
-
             while (result.next()){
                 Reimbursement reimbursement = new Reimbursement();
                 reimbursement.setId(result.getInt("reimb_id"));
@@ -78,7 +77,6 @@ public class ReimbursementDAOImp implements ReimbursementDAO {
             ResultSet result = statement.executeQuery(sql);
 
             List<Reimbursement> list = new ArrayList<Reimbursement>();
-
 
             while (result.next()){
                 Reimbursement reimbursement = new Reimbursement();
@@ -155,9 +153,6 @@ public class ReimbursementDAOImp implements ReimbursementDAO {
             statement.setInt(10, reimbursement.getId());
             statement .execute();
             return true;
-
-
-
         }catch(SQLException e){
             e.printStackTrace();
             return false;
@@ -170,6 +165,7 @@ public class ReimbursementDAOImp implements ReimbursementDAO {
             String sql = "INSERT INTO ers_reimbursement (reimb_amount, reimb_submitted," +
                     "reimb_description, reimb_author, reimb_status_id, reimb_type_id) " +
                     "VALUES (?, ?, ?, ?, ?, ?);";
+
             PreparedStatement statement = conn.prepareStatement(sql);
 
             statement.setDouble(1, reimbursement.getAmount());
@@ -197,7 +193,6 @@ public class ReimbursementDAOImp implements ReimbursementDAO {
             statement.execute();
 
             return true;
-
 
         }catch (SQLException e){
             e.printStackTrace();
