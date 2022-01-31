@@ -26,7 +26,7 @@ public class ReimbStatusController implements Controller{
 
     Handler getStatisByID = ctx ->{
         if(ctx.req.getSession(false)!=null){
-            String idString = ctx.pathParam("userid");
+            String idString = ctx.pathParam("statusid");
             try {
                 int id = Integer.parseInt(idString);
                 ReimbStatus status = reimbStatusService.getStatusByID(id);
@@ -55,7 +55,13 @@ public class ReimbStatusController implements Controller{
         }
     };
 
-    Handler deleteStatus = ctx ->{
+    Handler deleteStatus = ctx -> {
+        int id = Integer.parseInt(ctx.pathParam("id"));
+        if(reimbStatusService.deleteStatus(id)){
+            ctx.status(200);
+        }else{
+            ctx.status(400);
+        }
 
     };
 
