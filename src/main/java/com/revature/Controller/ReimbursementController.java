@@ -104,11 +104,17 @@ public class ReimbursementController implements Controller{
 
     //needs as session tracker
     Handler deleteReimbursement = ctx -> {
-        int id = Integer.parseInt(ctx.pathParam("id"));
-        if(reimbursementService.deleteReimbursement(id)){
-            ctx.status(200);
-        }else{
-            ctx.status(400);
+        if (ctx.req.getSession(false) != null){
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            if(reimbursementService.deleteReimbursement(id)){
+                ctx.status(200);
+            }else{
+                ctx.status(400);
+            }
+
+        }else {
+            log.warn("Invalid session.");
+            ctx.status(401);
         }
 
     };
@@ -150,7 +156,7 @@ public class ReimbursementController implements Controller{
         app.put("/reimbursments/user/update", updateReimbursement);
         app.get("/reimbursments/user/{author}", getReimbursementsByAuthor);
         app.post("/reimbursments/add", addReimbursement);
-        app.delete("/reimbursements/delete/{id}", deleteReimbursement);
+        app.post("/reimbursements/delete/{id}", deleteReimbursement);
         app.get("/reimbursments/user/{status}", getAllReimbursementsByStatus);
 
 

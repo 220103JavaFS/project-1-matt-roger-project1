@@ -56,11 +56,17 @@ public class ReimbStatusController implements Controller{
     };
 
     Handler deleteStatus = ctx -> {
-        int id = Integer.parseInt(ctx.pathParam("id"));
-        if(reimbStatusService.deleteStatus(id)){
-            ctx.status(200);
-        }else{
-            ctx.status(400);
+        if(ctx.req.getSession(false)!=null){
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            if(reimbStatusService.deleteStatus(id)){
+                ctx.status(200);
+            }else{
+                ctx.status(400);
+            }
+
+        }else {
+            log.warn("Invalid session.");
+            ctx.status(401);
         }
 
     };
@@ -69,6 +75,10 @@ public class ReimbStatusController implements Controller{
 
     @Override
     public void addRoutes(Javalin app) {
+        app.get("/status/get_all_status", getAllStatus);
+        app.post("/status/get_by_id/{id}", getStatisByID);
+        app.post("/status/add", addStatus);
+        app.post("/status/delete/{id}", deleteStatus);
 
     }
 }
