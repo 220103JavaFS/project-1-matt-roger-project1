@@ -18,7 +18,7 @@ public class TypeService {
     public ReimbType getTypeByID(int id){
         return reimbTypeDAO.getTypeByID(id);
     }
-    public boolean addType(Type newType){
+    public boolean addType(ReimbType newType){
         return addType(newType);
     }
     public boolean deleteType(int id){
