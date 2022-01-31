@@ -12,13 +12,12 @@ submit.addEventListener("click", loginFunc);
 
 
 async function loginFunc(){
-let user = {
+  let user = {
     username: username.value,
-    password: passWord.value
+    password: password.value
   }
-}
 
-let response = await fetch(
+  let response = await fetch(
     url+"login",
     {
       method : "POST",
@@ -26,3 +25,10 @@ let response = await fetch(
       credentials: "include"
     }
   );
+
+  if(response.status===200){
+    loginBtn.innerText = ""; 
+  }else{
+    console.log("Login unsuccessful. Returned status code of:"+response.status);
+  }
+}
