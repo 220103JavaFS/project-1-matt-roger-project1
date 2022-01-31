@@ -5,6 +5,7 @@ import com.revature.App;
 import com.revature.Models.ReimbursementDTO;
 import com.revature.Models.Reimbursement;
 import com.revature.Models.ReimbStatus;
+import com.revature.utils.Role;
 import com.revature.utils.Status;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
@@ -151,7 +152,7 @@ public class ReimbursementController implements Controller{
 
     @Override
     public void addRoutes(Javalin app) {
-        app.get("/reimbursments", getAllReimbursements);
+        app.get("/reimbursments", getAllReimbursements, Role.EMPLOYEE);
         app.get("/reimbursments/user/{userid}", getReimbursementById);
         app.put("/reimbursments/user/update", updateReimbursement);
         app.get("/reimbursments/user/{author}", getReimbursementsByAuthor);

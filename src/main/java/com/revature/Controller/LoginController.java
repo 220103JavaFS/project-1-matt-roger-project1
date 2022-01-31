@@ -18,10 +18,11 @@ public class LoginController implements Controller{
         UserDTO userDTO = ctx.bodyAsClass(UserDTO.class);
         User user = new User();
 
-        userDTO.password = toHexString(getSHA(userDTO.password));
-        user = loginService.login(userDTO);
+
         if(userDTO != null)
         {
+            userDTO.password = toHexString(getSHA(userDTO.password));
+            user = loginService.login(userDTO);
             ctx.req.getSession().setAttribute("accessLevel", user.getUserRoleId());
             log.info("Login successful");
             ctx.status(200);

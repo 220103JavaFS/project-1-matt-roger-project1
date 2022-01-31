@@ -17,9 +17,11 @@ public class ReimbursementDAOImp implements ReimbursementDAO {
             ResultSet result = statement.executeQuery(sql);
 
             List<Reimbursement> list = new ArrayList<Reimbursement>();
-            Reimbursement reimbursement = new Reimbursement();
+
 
             while (result.next()){
+                Reimbursement reimbursement = new Reimbursement();
+
                 reimbursement.setId(result.getInt("reimb_id"));
                 reimbursement.setAmount(result.getDouble("reimb_amount"));
                 reimbursement.setTimeSubmitted(result.getTimestamp("reimb_submitted"));
@@ -30,6 +32,9 @@ public class ReimbursementDAOImp implements ReimbursementDAO {
                 reimbursement.setResolverUserId(result.getInt("reimb_resolver"));
                 reimbursement.setStatusId(result.getInt("reimb_status_id"));
                 reimbursement.setTypeId(result.getInt("reimb_type_id"));
+
+                System.out.print(reimbursement.toString());
+                list.add(reimbursement);
             }
             return list;
         }catch (SQLException e){
