@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    <style>body {
+        background: #000
+    }
+    
+    .card {
+        border: none;
+        height: 320px
+    }
+    
+    .forms-inputs {
+        position: relative
+    }
+    
+    .forms-inputs span {
+        position: absolute;
+        top: -18px;
+        left: 10px;
+        background-color: #fff;
+        padding: 5px 10px;
+        font-size: 15px
+    }
+    
+    .forms-inputs input {
+        height: 50px;
+        border: 2px solid #eee
+    }
+    
+    .forms-inputs input:focus {
+        box-shadow: none;
+        outline: none;
+        border: 2px solid #000
+    }
+    
+    .btn {
+        height: 50px
+    }
+    
+    .success-data {
+        display: flex;
+        flex-direction: column
+    }
+    
+    .bxs-badge-check {
+        font-size: 90px
+    }</style>
+  
+
+
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            </div>   
+        </div>
+      </nav>
+      <br>
+        <div class ="col-12">
+          <div class ="input-group input-group-lg w-25 mx-auto">
+            <form class="form-control">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="username">
+                <label for="username_verify" id="username_verify"></label><br>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="password">
+                <label for="password_verify" id="password_verify"></label>
+                <br>
+                <button onclick="this.style.backgroundColor = 'green'" type="button" class="btn btn-primary d-grid gap-2 col-3 mx-auto" id="loginBtn">Login</button>
+            </form>
+          </div>
+        </div>
+        <br>
+      <script src="login.js"></script>
+    
+</body>
+</html>

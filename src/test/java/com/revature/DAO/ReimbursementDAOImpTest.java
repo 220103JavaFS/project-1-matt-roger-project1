@@ -33,7 +33,7 @@ public class ReimbursementDAOImpTest {
             new Timestamp(2023, 1, 3, 10, 0, 0, 0),
             "Test reimbursement",
             hexStringToByteArray("e04fd020ea3a6910a2d808002b30309d"),
-            2,
+            1,
             2,
             0,
             2
