@@ -6,41 +6,30 @@ let button = document.getElementById('submit');
 
 const url = 'http://localhost:8080';
 
+submitRequest.addEventListener("click", submitreimbursement);
+
 button.addEventListener('click', requestFunc);
 
-async function requestFunc() {
-    let reimbursementRequest = {
-      amount: amount,
-      description: description,
-      receipt: receipt,
-      type: type,
-      status: status,
-    };
-    if (
-        reimbursementRequest.amount == '' ||
-        reimbursementRequest.type == '' ||
-        reimbursementRequest.status == ''
-      ) {
+async function submitreimbursement(){
+  let reimbursement = {
+    reimbAmount: document.getElementById("reimbamount").value,
+    reimbType:document.getElementById("reimbType").value,
+    reimbDescription:document.getElementById("reimbDescription").value,
+  }
 
-        alert(
-          'Please fill in the form'
-        );
-        return;
-      }
+  let response = await fetch(url+"reimbursements", {
+    method:"POST",
+    body:JSON.stringify(home),
+    credentials:"include"
+  })
 
-    let response = await fetch(url + '/request', {
-        method: 'POST',
-        body: JSON.stringify(reimbursementRequest),
-        credentials: 'include', //TODO: Is this needed for cookies?
-    });
-
-    
-    if (response.status === 200) {   
-        let data = await response.json(); 
-        console.log(data);
-        location.href = 'http://localhost:8080/MainPage.html';
-  } else {
-    alert('Try again');
+  if(response.status===201){
+    getAllHomes();
+    console.log("reimbursement added successfully");
+  }else{
+    console.log("Problem encountered when adding reimbursement.");
   }
 
 }
+
+
