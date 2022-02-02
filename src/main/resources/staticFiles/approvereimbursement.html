@@ -54,7 +54,7 @@
 
 </head>
 <body>
-    <button id="btn">Get All Reimbursements</button>
+    <button id="btn" id="getAllbtn">Get All Reimbursements</button>
     <br>
     <table class="table" id="table">
         <thead>
@@ -68,11 +68,10 @@
             <th>ResolverId</th>
             <th>Type</th>
             <th>Status</th>
-            <th>Aprove</th>
+            <th>Approve</th>
             <th>Deny</th>
-          </tr>
         </thead>
-        <tbody id="tbody">
+        <tbody id="reimbursementTbl">
           <tr>
             <td>1</td>
             <td>0</td>
@@ -82,9 +81,9 @@
             <td>2</td>
             <td>1</td>
             <td>TRAVEL</td>
-            <td>PENDING</td>
-            <td><button>X</button></td>
-            <td><button>X</button></td>
+            <td class='status'>PENDING</td>
+            <td><button class="btn status-btn" data-status="Approved">X</button></td>
+            <td><button class="btn status-btn" data-status="Denied">X</button></td>
           </tr>
         </tbody>
       </table>
