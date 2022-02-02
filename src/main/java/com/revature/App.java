@@ -3,6 +3,7 @@ package com.revature;
 import com.revature.Controller.*;
 import com.revature.Models.AccessManager;
 import io.javalin.Javalin;
+import io.javalin.http.staticfiles.Location;
 
 
 public class App {
@@ -12,9 +13,7 @@ public class App {
     public static void main(String[] args) {
 
         app = Javalin.create(config -> {
-            config.addStaticFiles(staticFiles -> {
-                staticFiles.hostedPath = "/resources/static";
-            });
+            config.addStaticFiles("./src/main/resources/staticFiles", Location.EXTERNAL);
 
             config.accessManager(new AccessManager());}); //This represents the configuration of the framework at runtime.
         configure(new UserController(), new ReimbursementController(), new LoginController(), new ReimbStatusController(), new ReimbTypeController());
