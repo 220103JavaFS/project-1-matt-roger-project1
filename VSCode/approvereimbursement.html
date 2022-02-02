@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approve</title>
+    <style>
+        html {background-color: rgb(2, 6, 44);}
+        #topnav{
+            width: 100%;
+            float: left;
+	        margin: 0px;
+            border: 0px;
+	        padding: 0;
+            background-color: black;
+            text-align: center;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 20px;
+        }
+        #topLink{
+            color: white;
+            padding: 15px;
+        }
+        #topbar{
+            background-color: rgb(2, 6, 44);
+            color: white;
+            text-align: center;
+        }
+
+        a:link { text-decoration: none; }
+        a:visited { text-decoration: none; }
+        a:hover { background-color: darkgrey; }
+        a:active { text-decoration: none; }
+
+        #submitreimbursement{
+            margin: auto;
+            width: 25%;
+            padding: 20px, 0px, 0px, 0px;
+            color: black;
+            text-align: left;
+            font-weight: 600;
+            font-size: 20px;
+
+        }
+    
+
+      </style>
+
+
+
+</head>
+<body>
+    <button id="btn">Get All Reimbursements</button>
+    <br>
+    <table class="table" id="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Amount</th>
+            <th>Submitted</th>
+            <th>Resolved</th>
+            <th>Description</th>
+            <th>AuthorId</th>
+            <th>ResolverId</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr>
+            <td>1</td>
+            <td>100</td>
+            <td>12312312</td>
+            <td>412412412</td>
+            <td>Went to lunch</td>
+            <td>23</td>
+            <td>414</td>
+            <td>FOOD</td>
+            <td>APPROVED</td>
+            <td><button>X</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <script src="approvereimbursements.js"></script>
+    
+</body>
+</html>
