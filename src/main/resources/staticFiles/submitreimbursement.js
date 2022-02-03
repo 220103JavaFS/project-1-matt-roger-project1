@@ -9,7 +9,7 @@ const timeSubmitted = Date.now();
 
 
 
-const url = 'http://localhost:8080/reimbursements/add';
+const url = 'http://localhost:8080/';
 
 submitRequest.addEventListener("click", submitReimbursement);
 
