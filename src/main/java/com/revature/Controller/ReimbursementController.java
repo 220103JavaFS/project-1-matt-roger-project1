@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.revature.Service.ReimbursementService;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,6 +131,7 @@ public class ReimbursementController implements Controller{
                 list = reimbursementService.getAllReimbursementsByStatus(id);
                 ctx.json(list);
                 ctx.status(200);
+                System.out.println("list");
             }catch(NumberFormatException e){
                 e.printStackTrace();
                 log.warn("Error. Invalid Entry.");
@@ -158,7 +160,7 @@ public class ReimbursementController implements Controller{
         app.get("/reimbursments/user/{author}", getReimbursementsByAuthor, Role.EMPLOYEE);
         app.post("/reimbursments/add", addReimbursement, Role.EMPLOYEE);
         app.post("/reimbursements/delete/{id}", deleteReimbursement, Role.MANAGER);
-        app.get("/reimbursments/user/{status}", getAllReimbursementsByStatus, Role.EMPLOYEE);
+        app.get("/reimbursments/user/{status}", getAllReimbursementsByStatus, Role.MANAGER);
 
     }
 }
