@@ -70,21 +70,20 @@
       
       <div id="submitreimbursement">
         <form>
-            <label class="form-label" for="amount">Amount</label>
-            <input class="form-control" type="number" id="amount" name="amount" min="0" required placeholder="$00.00"> <span id="amountloc"> </span>
+            <label for="reimbamount">Amount</label>
+            <input type="number" id="reimbamount" name ="reimbamount">
             <br>
-            <label class="form-label" for="reimType">Type</label>
-                <select class="form-select" id="reimType" required>
-                    <option value= "Payout" selected>Payout</option>
-                    <option value="Travel">Travel</option>
-                    <option value="Meal">Meal</option>
-
-                </select>
+            <label for="reimbDescription">Description</label>
+            <input type="text" id ="reimbDescription" placeholder="Descrption of expense">
             <br>
-            <label class="form-label" for="description">Description</label>
-            <textarea required class="form-control" id="description" name="description" placeholder="Enter request description" >
-            </textarea>
-        </form>
+            <label for="reimbType">Types</label>
+            <select id ="reimbType" name="types">
+                <option value ="1">PAYOUT</option>
+                <option value ="2">TRAVEL</option>
+                <option value ="3">MEAL</option>
+            </select>      
+            <br>
+  
         <button class ="btn btn-primary" id="submitRequest">Create Reimbursement</button>
 
 
