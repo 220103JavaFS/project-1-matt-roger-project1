@@ -68,9 +68,9 @@ function populatereimbursment(reimbursements){
     }
     
     let response = await fetch(
-      url+"user/update",
+      url+"reimbursments/update",
       {
-        method : "POST",
+        method : "PUT",
         body : JSON.stringify(reimbursement),
         credentials: "include"
       }

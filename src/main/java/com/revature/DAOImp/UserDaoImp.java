@@ -29,7 +29,7 @@ public class UserDaoImp implements UserDAO {
                 user.setFirstName(result.getString("user_first_name"));
                 user.setLastName(result.getString("user_last_name"));
                 user.setEmail(result.getString("user_email"));
-                user.setUserRoleId(result.getInt("user_role_id"));
+                user.setUserRoleId(result.getInt("user_role_id") - 1);
             }
             return user;
         }catch (SQLException e){
@@ -57,7 +57,7 @@ public class UserDaoImp implements UserDAO {
                 user.setFirstName(result.getString("user_first_name"));
                 user.setLastName(result.getString("user_last_name"));
                 user.setEmail(result.getString("user_email"));
-                user.setUserRoleId(result.getInt("user_role_id"));
+                user.setUserRoleId(result.getInt("user_role_id") - 1);
                 list.add(user);
             }
             return list;
@@ -82,7 +82,7 @@ public class UserDaoImp implements UserDAO {
             statement.setString(3, user.getFirstName());
             statement.setString(4, user.getLastName());
             statement.setString(5, user.getEmail());
-            statement.setInt(6, user.getUserRoleId());
+            statement.setInt(6, user.getUserRoleId() + 1);
 
             statement.execute();
             return true;
@@ -136,7 +136,7 @@ public class UserDaoImp implements UserDAO {
             statement.setString(count++, user.getFirstName());
             statement.setString(count++, user.getLastName());
             statement.setString(count++, user.getEmail());
-            statement.setInt(count++, user.getUserRoleId());
+            statement.setInt(count++, user.getUserRoleId() + 1);
             statement.setString(count++, user.getUsername());
 
             statement.execute();
