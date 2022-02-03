@@ -6,9 +6,6 @@ let reimbType = document.getElementById("reimbType");
 
 const timeSubmitted = Date.now();
 
-
-
-
 const url = 'http://localhost:8080/';
 
 submitRequest.addEventListener("click", submitReimbursement);
@@ -34,7 +31,7 @@ async function submitReimbursement(){
   if(response.status===200){
     submit.innerText = ""; 
   }else{
-    console.log("Add failed:"+response.status);
+    console.log("Add:"+response.status);
   }
 
 }
