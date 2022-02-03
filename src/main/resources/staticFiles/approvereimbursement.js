@@ -62,7 +62,7 @@ function populatereimbursment(reimbursements){
       let approveBtn = document.createElement("button");
       let denyBtn = document.createElement("button");
       approveBtn.addEventListener("click", updateValue.bind(event, reimbursement, 2));
-      denyBtn.addEventListener("click", updateValue.bind(reimbursement, 3));
+      denyBtn.addEventListener("click", updateValue.bind(event, reimbursement, 3));
 
       approveBtn.innerText = "O";
       denyBtn.innerText = "X";
@@ -78,8 +78,7 @@ function populatereimbursment(reimbursements){
   async function updateValue(reimbursement, isApproved)
   {
     
-    //reimbursement['statusId'] = isApproved;
-    
+    reimbursement['statusId'] = isApproved;
   
     console.log(reimbursement);
     let response = await fetch(
