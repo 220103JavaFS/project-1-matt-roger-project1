@@ -129,7 +129,7 @@ public class ReimbursementController implements Controller{
                 list = reimbursementService.getAllReimbursementsByStatus(id);
                 ctx.json(list);
                 ctx.status(200);
-                System.out.println("list");
+                System.out.println(list);
             }catch(NumberFormatException e){
                 e.printStackTrace();
                 log.warn("Error. Invalid Entry.");

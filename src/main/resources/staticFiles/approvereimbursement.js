@@ -1,11 +1,13 @@
 let getAllbtn = document.getElementById("getAllbtn");
 let statusbtn = document.getElementById("statusbtn");
 let reimbursementTable = document.getElementById("reimbursementTbl");
+let statusInput = document.getElementById("status");
 
 const url = "http://localhost:8080/"
 
 getAllbtn.addEventListener("click", getAllReimbursements);
 statusbtn.addEventListener("click", getAllReimbursementsByStatus);
+
 
 
 document.querySelectorAll('.status-btn').forEach(button => {
@@ -17,15 +19,16 @@ document.querySelectorAll('.status-btn').forEach(button => {
 async function getAllReimbursementsByStatus(){
 
 
-  let response = await fetch(url+ "reimbursments/{status}", { 
+  let response = await fetch(url+ "reimbursments/"+statusInput.value, { 
     credentials: 'include'
    });
 
-  if (response.status === 201) {
+  if (response.status === 200) {
     let data = await response.json();
     console.log(data);
     populatereimbursment(data);
   } else {
+    console.log(url+ "reimbursments/"+statusInput.value);
     console.log('Something went wrong');
   }
 }
