@@ -3,6 +3,7 @@ let reimbursementTable = document.getElementById("reimbursementTbl");
 let reimbamount = document.getElementById("reimbamount");
 let reimbDescription = document.getElementById("reimbDescription");
 let reimbType = document.getElementById("reimbType");
+let authorUserId = 1;
 
 const timeSubmitted = Date.now();
 
@@ -13,22 +14,24 @@ submitRequest.addEventListener("click", submitReimbursement);
 
 async function submitReimbursement(){
   let reimbursement = {
-    reimb_amount: reimbamount.value,
-    reimb_description: reimbDescription.value,
-    reimb_submitted:timeSubmitted,
-    reimb_status_id: 1,
-    reimb_type: reimbType.value
-
+    amount: reimbamount.value,
+    description: reimbDescription.value,
+    timeSubmitted:timeSubmitted,
+    statusId: 1,
+    typeId: reimbType.value,
+    authorUserId
+  
 
   }
 
-  let response = await fetch(url+"reimbursements/add", {
+  let response = await fetch(url+"reimbursments/add", {
     method:"POST",
     body:JSON.stringify(reimbursement),
     credentials:"include"
   })
 
   if(response.status===200){
+    console.log("success");
     submit.innerText = ""; 
   }else{
     console.log("Add:"+response.status);
