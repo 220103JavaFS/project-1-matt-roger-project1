@@ -17,7 +17,7 @@ document.querySelectorAll('.status-btn').forEach(button => {
 async function getAllReimbursementsByStatus(){
 
 
-  let response = await fetch(url+ "reimbursments/user/{status}", { 
+  let response = await fetch(url+ "reimbursments/{status}", { 
     credentials: 'include'
    });
 
@@ -58,8 +58,8 @@ function populatereimbursment(reimbursements){
       let denyTd = document.createElement('td');
       let approveBtn = document.createElement("button");
       let denyBtn = document.createElement("button");
-      approveBtn.addEventListener("click", updateValue.bind(reimbursement, true));
-      denyBtn.addEventListener("click", updateValue.bind(reimbursement, false));
+      approveBtn.addEventListener("click", updateValue.bind(event, reimbursement, 2));
+      denyBtn.addEventListener("click", updateValue.bind(reimbursement, 3));
 
       approveBtn.innerText = "O";
       denyBtn.innerText = "X";
@@ -74,23 +74,23 @@ function populatereimbursment(reimbursements){
 
   async function updateValue(reimbursement, isApproved)
   {
-    if(isApproved)
-    {
-      reimbursement['statusId'] = 1;
-    }
-    else
-    {
-      reimbursement['statusId'] = 2;
-    }
     
+    //reimbursement['statusId'] = isApproved;
+    
+  
+    console.log(reimbursement);
     let response = await fetch(
       url+"reimbursments/update",
       {
         method : "PUT",
         body : JSON.stringify(reimbursement),
         credentials: "include"
+
       }
+      
+
     );
+    
   
     if(response.status===200){
       console.log("Update successfull. Returned status code of:"+response.status);

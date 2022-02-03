@@ -125,7 +125,7 @@ public class ReimbursementController implements Controller{
             try {
 
                 int id = Integer.parseInt(idString);
-                List list = new ArrayList<Reimbursement>();
+                List list;
                 list = reimbursementService.getAllReimbursementsByStatus(id);
                 ctx.json(list);
                 ctx.status(200);
