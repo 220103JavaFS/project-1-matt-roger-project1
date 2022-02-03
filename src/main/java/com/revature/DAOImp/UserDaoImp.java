@@ -30,6 +30,7 @@ public class UserDaoImp implements UserDAO {
                 user.setLastName(result.getString("user_last_name"));
                 user.setEmail(result.getString("user_email"));
                 user.setUserRoleId(result.getInt("user_role_id") - 1);
+                System.out.println(user.getUserRoleId());
             }
             return user;
         }catch (SQLException e){
