@@ -16,7 +16,7 @@ document.querySelectorAll('.status-btn').forEach(button => {
 
 
 async function getAllReimbursements(){
-    let response = await fetch(url+"reimbursements", {
+    let response = await fetch(url+"reimbursments", {
       credentials:"include"
     });
   
