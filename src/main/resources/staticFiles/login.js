@@ -16,7 +16,6 @@ async function loginFunc(){
     username: username.value,
     password: password.value
   }
-  console.log(username.value);
   let response = await fetch(
     url+"login",
     {
@@ -27,7 +26,7 @@ async function loginFunc(){
   );
 
   if(response.status===200){
-    submit.innerText = ""; 
+    console.log("Login successful. Returned status code of:"+response.status); 
   }else{
     console.log("Login unsuccessful. Returned status code of:"+response.status);
   }
