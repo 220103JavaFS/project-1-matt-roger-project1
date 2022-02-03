@@ -1,7 +1,7 @@
 let getAllbtn = document.getElementById("getAllbtn");
 let reimbursementTable = document.getElementById("reimbursementTbl");
 
-const url = "http://localhost:8080/reimbursements"
+const url = "http://localhost:8080/"
 
 getAllbtn.addEventListener("click", getAllReimbursements);
 
@@ -16,7 +16,7 @@ document.querySelectorAll('.status-btn').forEach(button => {
 
 
 async function getAllReimbursements(){
-    let response = await fetch(url+"reimbursements", {
+    let response = await fetch(url+"reimbursments", {
       credentials:"include"
     });
   
