@@ -22,7 +22,6 @@ public class ReimbursementController implements Controller{
 
     private ReimbursementService reimbursementService = new ReimbursementService();
 
-
     Handler getAllReimbursements = ctx ->{
         if(ctx.req.getSession(false)!=null) {
             ctx.json(reimbursementService.getAllReimbursements());
@@ -46,8 +45,6 @@ public class ReimbursementController implements Controller{
                 e.printStackTrace();
                 ctx.status(400);
             }
-
-
         }else{
             log.warn("Error. Invalid session.");
             ctx.status(401);
@@ -59,6 +56,12 @@ public class ReimbursementController implements Controller{
         reimbursement = ctx.bodyAsClass(Reimbursement.class);
 
         if(ctx.req.getSession(false) != null) {
+            reimbursement.setResolverUserId((Integer)ctx.req.getSession().getAttribute("user"));
+            if (reimbursement.getResolverUserId() == reimbursement.getAuthorUserId())
+            {
+                ctx.status(403);
+                return;
+            }
             ctx.json(reimbursementService.updateReimbursement(reimbursement));
             ctx.status(200);
         }else{
@@ -71,7 +74,6 @@ public class ReimbursementController implements Controller{
         if(ctx.req.getSession(false)!=null){
             String idString = ctx.pathParam("author");
             try {
-
                 int id = Integer.parseInt(idString);
                 List list = new ArrayList<Reimbursement>();
                 list = reimbursementService.getReimbursementsByAuthor(id);
@@ -85,13 +87,13 @@ public class ReimbursementController implements Controller{
             log.warn("Error. Invalid session.");
             ctx.status(401);
         }
-
     };
 
     //needs a session tracker
     Handler addReimbursement = (ctx) -> {
         if (ctx.req.getSession(false) != null) {
             Reimbursement reimbursement = ctx.bodyAsClass(Reimbursement.class);
+            reimbursement.setAuthorUserId((Integer)ctx.req.getSession().getAttribute("user"));
             if(reimbursementService.addReimbursement(reimbursement)){
                 ctx.status(201);
             }else {
@@ -100,8 +102,6 @@ public class ReimbursementController implements Controller{
         }else{
             ctx.status(401);
         }
-
-
     };
 
     //needs as session tracker
@@ -113,12 +113,10 @@ public class ReimbursementController implements Controller{
             }else{
                 ctx.status(400);
             }
-
         }else {
             log.warn("Invalid session.");
             ctx.status(401);
         }
-
     };
 
     Handler getAllReimbursementsByStatus = ctx -> {
@@ -137,20 +135,11 @@ public class ReimbursementController implements Controller{
                 log.warn("Error. Invalid Entry.");
                 ctx.status(400);
             }
-
-
         }else{
             log.warn("Error. Invalid session.");
             ctx.status(401);
         }
-
     };
-
-
-
-
-
-
 
     @Override
     public void addRoutes(Javalin app) {
@@ -160,7 +149,6 @@ public class ReimbursementController implements Controller{
         app.get("/reimbursments/user/{author}", getReimbursementsByAuthor, Role.EMPLOYEE);
         app.post("/reimbursments/add", addReimbursement, Role.EMPLOYEE);
         app.post("/reimbursements/delete/{id}", deleteReimbursement, Role.MANAGER);
-        app.get("/reimbursments/user/{status}", getAllReimbursementsByStatus, Role.MANAGER);
-
+        app.get("/reimbursments/{status}", getAllReimbursementsByStatus, Role.MANAGER);
     }
 }

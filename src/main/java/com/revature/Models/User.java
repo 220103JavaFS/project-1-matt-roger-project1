@@ -1,10 +1,11 @@
 package com.revature.Models;
 
 import java.util.Objects;
+import java.util.function.IntToDoubleFunction;
 
 public class User {
 
-    //private Integer userID;
+    private Integer userID;
     private String username;
     private String password;
     private String firstName;
@@ -15,8 +16,8 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String firstName, String lastName, String email, Integer userRoleId) {
-        //this.userID = -1;
+    public User(Integer userID, String username, String password, String firstName, String lastName, String email, Integer userRoleId) {
+        this.userID = userID;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -25,13 +26,13 @@ public class User {
         this.userRoleId = userRoleId;
     }
 
-//    public Integer getUserID() {
-//        return userID;
-//    }
+    public Integer getUserID() {
+        return userID;
+    }
 
-//    public void setUserID(Integer userID) {
-//        this.userID = userID;
-//    }
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+    }
 
     public String getUsername() {
         return username;
@@ -91,13 +92,14 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, password, firstName, lastName, email, userRoleId);
+        return Objects.hash(userID, username, password, firstName, lastName, email, userRoleId);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
+                "userID=" + userID +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
