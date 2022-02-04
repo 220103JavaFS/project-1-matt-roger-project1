@@ -48,4 +48,17 @@ CREATE TABLE ers_reimbursement(
 INSERT INTO ers_user_roles(user_role) VALUES('approver');
 INSERT INTO ers_user_roles(user_role) VALUES('author');
 
+INSERT INTO ers_reimbursement_status (reimb_status) VALUES ('pending');
+INSERT INTO ers_reimbursement_status (reimb_status) VALUES ('approved');
+INSERT INTO ers_reimbursement_status (reimb_status) VALUES ('denied');
+
+UPDATE ers_users SET user_role_id = 4 WHERE ers_username = 'admin';
+
+UPDATE ers_user_roles SET user_role = 'BASE' WHERE ers_user_role_id = 1;
+UPDATE ers_user_roles SET user_role = 'CUSTOMER' WHERE ers_user_role_id = 2;
+INSERT INTO ers_user_roles(user_role) VALUES('EMPLOYEE');
+INSERT INTO ers_user_roles(user_role) VALUES('MANAGER');
+
 INSERT INTO ers_users(ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) VALUES('admin', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86', 'Matt', 'Smith', 'matt.smith@aol.com', 2);
+INSERT INTO ers_users(ers_username, ers_password,user_first_name, user_last_name, user_email, user_role_id)
+VALUES('admin2', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','David', 'Tennant', 'david.tennant@outlook.com', '4');
